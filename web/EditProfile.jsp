@@ -120,6 +120,7 @@
                         out.println("<font color=green>"+msgs+"</font><br><br>");
                     
                     out.println("<font color=blue><u>Current Details:</u></font>");
+                    out.println("<br><br>");
                     out.println("<form method=post action=UpdateProfileServlet onsubmit='return validateEdit(this);'>");
                     out.println("<table align=center border=0>");
                     
