@@ -4,10 +4,10 @@
  */
 package Expert;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
@@ -34,8 +34,9 @@ public class ViewBugs extends HttpServlet
         {
              HttpSession ses=request.getSession(false);
              String login=(String)ses.getAttribute("uname");
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            
+             Connection con = DatabaseConnect();
+             
             PreparedStatement pst=con.prepareStatement("select * from bugs where assign_to=?");
             pst.setString(1,login);
             

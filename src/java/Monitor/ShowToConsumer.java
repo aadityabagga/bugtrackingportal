@@ -4,10 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -45,8 +45,7 @@ public class ShowToConsumer extends HttpServlet {
             {            
             int bugid=Integer.parseInt(request.getParameter("bugno"));
             
-            Class.forName("com.mysql.jdbc.Driver");
-              Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
               
               PreparedStatement pst = con.prepareStatement("update bugs set filter='Allow', status='Solved', solved_on=? where bug_id=?");
               

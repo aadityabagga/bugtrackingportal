@@ -88,13 +88,25 @@
             </table>
           </form>
         <br>
-      
+      <!--Error message-->
             <font color="red">
             
         <%
             String msg=(String)request.getAttribute("msg");
             if(msg!=null)
                 out.println(msg);
+        
+        %>
+            
+            </font>
+      
+            <!--Success message-->
+            <font color="green">
+            
+        <%
+            String msgs=(String)request.getAttribute("msgs");
+            if(msgs!=null)
+                out.println(msgs);
         
         %>
             

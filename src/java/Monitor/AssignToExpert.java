@@ -1,10 +1,10 @@
  
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
@@ -32,9 +32,7 @@ public class AssignToExpert extends HttpServlet {
               int expid = Integer.parseInt(request.getParameter("expert_id"));  //get expert id
               int bugno = Integer.parseInt(request.getParameter("bug_no"));     //get bug id
                  
-      
-             Class.forName("com.mysql.jdbc.Driver");
-              Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+              Connection con = DatabaseConnect();
               
               PreparedStatement pst1 = con.prepareStatement("Select * from experts where expert_id=?");
               pst1.setInt(1, expid);

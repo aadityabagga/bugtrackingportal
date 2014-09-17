@@ -4,10 +4,11 @@
     Author     : aaditya
 --%>
 
-<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
+
 <%@page errorPage="ErrorPage.jsp" contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -80,8 +81,8 @@
             
             String role=(String)s.getAttribute("rl");
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
+            
             PreparedStatement pst=null;
             
             if(role.equals("expert"))
@@ -108,12 +109,17 @@
                     out.println("<h3>Edit Profile</h3>");
                     out.println("<br>");
                     
+                    //Error message
                     String msg=(String)request.getAttribute("msg");
                     if(msg!=null)
                         out.println("<font color=red>"+msg+"</font><br><br>");
                     
+                    //Success message
+                    String msgs=(String)request.getAttribute("msgs");
+                    if(msgs!=null)
+                        out.println("<font color=green>"+msgs+"</font><br><br>");
+                    
                     out.println("<font color=blue><u>Current Details:</u></font>");
-                    out.println("<br><br>");
                     out.println("<form method=post action=UpdateProfileServlet onsubmit='return validateEdit(this);'>");
                     out.println("<table align=center border=0>");
                     

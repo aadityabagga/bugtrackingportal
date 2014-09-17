@@ -5,6 +5,7 @@
     Author     : aaditya
 --%>
 
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
 <%@page errorPage="ErrorPage.jsp" import="java.sql.*" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -66,8 +67,8 @@
             {
                 int bug_no=Integer.parseInt(request.getParameter("bugno"));
                 
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+                Connection con = DatabaseConnect();
+                
                 Statement st=con.createStatement();
                 ResultSet rs=st.executeQuery("Select * from experts");
                 

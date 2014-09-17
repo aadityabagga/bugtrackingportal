@@ -4,10 +4,10 @@
  */
 package Common;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
@@ -34,8 +34,7 @@ public class ValidateLogin extends HttpServlet {
             String p = request.getParameter("pw");
             String r = request.getParameter("rl");
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
             
             PreparedStatement pst=null;
             ResultSet rs=null;            
@@ -101,7 +100,7 @@ public class ValidateLogin extends HttpServlet {
         }        
         catch(Exception e)
         {
-            response.sendRedirect("Login.jsp?msg=Login Authentication Failed");
+            response.sendRedirect("Login.jsp?msg=Login Authentication Failed: "+e);
         }
         finally
         {            

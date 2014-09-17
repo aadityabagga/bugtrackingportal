@@ -4,10 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,9 +50,8 @@ public class AddExpertLogic extends HttpServlet {
             String ct=request.getParameter("city");
             String d=request.getParameter("dom");
             
+            Connection con = DatabaseConnect();
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
             PreparedStatement pst=con.prepareStatement("insert into experts(username,password,email,phone,address,city,domain) values(?,?,?,?,?,?,?)");
             
             RequestDispatcher disp=null;

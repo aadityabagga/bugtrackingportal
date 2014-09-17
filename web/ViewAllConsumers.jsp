@@ -15,18 +15,15 @@
            <center>
 
 <%@include file="MonitorMenu.jsp"%>
-
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.Connection"%>
 <%@page errorPage="ErrorPage.jsp" contentType="text/html" pageEncoding="UTF-8"%>
-<%
+
+               <%
    
-    response.setHeader("Cache-Control","no-cache");
-  response.setHeader("Cache-Control","no-store");
-  response.setHeader("Pragma","no-cache");
-  response.setDateHeader ("Expires", 0);
+            response.setHeader("Cache-Control","no-cache");
+            response.setHeader("Cache-Control","no-store");
+            response.setHeader("Pragma","no-cache");
+            response.setDateHeader ("Expires", 0);
       
              String name=(String)session.getAttribute("uname");
             if(name==null)

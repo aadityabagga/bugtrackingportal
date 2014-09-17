@@ -4,10 +4,10 @@
  */
 package Common;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
@@ -54,8 +54,8 @@ public class UpdateProfileServlet extends HttpServlet
                
                String city=request.getParameter("t7");
                
-           Class.forName("com.mysql.jdbc.Driver");
-              Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+              Connection con = DatabaseConnect();
+              
               PreparedStatement pst=null;
               
               
@@ -90,7 +90,7 @@ public class UpdateProfileServlet extends HttpServlet
                             
               if(status>0)
               {
-                  request.setAttribute("msg", "Profile Edited Successfully!");
+                  request.setAttribute("msgs", "Profile Edited Successfully!");
                   
               
               }

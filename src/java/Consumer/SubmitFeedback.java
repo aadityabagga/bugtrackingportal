@@ -4,12 +4,11 @@
  */
 package Consumer;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
 
 import javax.servlet.ServletException;
@@ -46,8 +45,7 @@ public class SubmitFeedback extends HttpServlet {
             int bugid=Integer.parseInt((String)request.getParameter("bid"));
             String fback=request.getParameter("fb");
         
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
         
             String query="update bugs set feedback=? where bug_id=?";
             PreparedStatement pst=con.prepareStatement(query);

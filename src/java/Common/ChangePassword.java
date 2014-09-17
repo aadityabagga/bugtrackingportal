@@ -4,10 +4,10 @@
  */
 package Common;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
@@ -57,8 +57,7 @@ public class ChangePassword extends HttpServlet {
             else
                 query="select password from experts where username=?";
             
-            Class.forName("com.mysql.jdbc.Driver");
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+           Connection con=DatabaseConnect();
            PreparedStatement pst=con.prepareStatement(query);
            pst.setString(1, lID);
         ResultSet rs=pst.executeQuery();
@@ -83,7 +82,7 @@ public class ChangePassword extends HttpServlet {
            pst1.setString(2, lID);
             int status=pst1.executeUpdate();
             if(status>0)
-                request.setAttribute("msg", "Password Changed Successfully");
+                request.setAttribute("msgs", "Password Changed Successfully");
             else
                 request.setAttribute("msg", "Password not Changed");
         }

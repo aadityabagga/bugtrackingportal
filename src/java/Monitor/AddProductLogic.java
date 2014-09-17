@@ -4,9 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.DriverManager;
+import java.sql.Connection;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,8 +37,8 @@ public class AddProductLogic extends HttpServlet {
                
            RequestDispatcher dis=null;
    
-            Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
+            
             java.sql.PreparedStatement pst=con.prepareStatement("insert into products(pro_name,pro_desc) values(?,?)");
            
             pst.setString(1, pro_name);

@@ -4,10 +4,10 @@
  */
 package Consumer;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -43,8 +43,7 @@ public class EnterIntoConsumerDB extends HttpServlet {
                     Date dt=new Date();
 
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
             PreparedStatement pst=con.prepareStatement("insert into consumers(username,password,email,phone,address,city,gender,dob,joined_on) values(?,?,?,?,?,?,?,?,?)");
             
             RequestDispatcher disp=null;

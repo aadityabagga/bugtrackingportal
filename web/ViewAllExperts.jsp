@@ -12,7 +12,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
 <%@page import="java.sql.Connection"%>
 
 
@@ -42,9 +42,10 @@ response.setHeader("Cache-Control","no-cache");
     
 try
 {
-  Class.forName("com.mysql.jdbc.Driver");
-     Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
-      Statement st=con.createStatement();
+       
+  Connection con = DatabaseConnect();
+      
+     Statement st=con.createStatement();
       ResultSet rs=st.executeQuery("Select * from experts");
       
       out.println("<center><h3><u>View All Experts</u></h3></center>");

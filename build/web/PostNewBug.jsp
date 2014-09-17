@@ -6,7 +6,7 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
 <%@page import="java.sql.Connection"%>
 <%@page errorPage="ErrorPage.jsp" contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -56,18 +56,16 @@
                             
                             <%
                                     
-                                    
-                                Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+                                    Connection con = DatabaseConnect();
             
-            String query="Select * from products";
-            Statement st=con.createStatement();
+                                    String query="Select * from products";
+                                    Statement st=con.createStatement();
             
-            ResultSet rs=st.executeQuery(query);
+                                    ResultSet rs=st.executeQuery(query);
             
-            while(rs.next())
+                                    while(rs.next())
                          
-                  out.println("<option value="+rs.getString("pro_name")+">"+rs.getString("pro_name")+"</option>");
+                                    out.println("<option value="+rs.getString("pro_name")+">"+rs.getString("pro_name")+"</option>");
                                       
                   
               %>

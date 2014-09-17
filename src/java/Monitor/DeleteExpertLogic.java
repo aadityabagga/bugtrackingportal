@@ -4,10 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
@@ -36,8 +36,8 @@ public class DeleteExpertLogic extends HttpServlet {
                  int eid=Integer.parseInt(request.getParameter("expid"));
                 
                 RequestDispatcher disp=null;
-              Class.forName("com.mysql.jdbc.Driver");
-              Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+             
+              Connection con = DatabaseConnect();
               
               PreparedStatement pst1 = con.prepareStatement("select * from experts where expert_id=?");
               pst1.setInt(1,eid);

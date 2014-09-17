@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.DriverManager"%>
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -69,9 +69,8 @@
             
             int bugid=Integer.parseInt(request.getParameter("bugid"));
             
-            
-             Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
+                        
             PreparedStatement pst=con.prepareStatement("select * from bugs where bug_id=?");
             pst.setInt(1,bugid);
             

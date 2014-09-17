@@ -4,10 +4,10 @@
  */
 package Consumer;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.RequestDispatcher;
@@ -40,8 +40,7 @@ public class ViewAllBugs extends HttpServlet
             request.setAttribute("msg", message);
             
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
         
             String query="Select * from bugs where posted_by=?";
         

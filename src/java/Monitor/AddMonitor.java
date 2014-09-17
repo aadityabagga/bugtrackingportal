@@ -4,10 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,8 +42,8 @@ public class AddMonitor extends HttpServlet {
             String un=request.getParameter("nm");
             String p=request.getParameter("pwd");
             
-            Class.forName("com.mysql.jdbc.Driver");
-           Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+           Connection con = DatabaseConnect();
+           
            PreparedStatement pst=con.prepareStatement("insert into monitors(username,password) values(?,?)");
            pst.setString(1, un);
            pst.setString(2, p);

@@ -4,10 +4,10 @@
  */
 package Monitor;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,8 +35,8 @@ public class DeleteProductLogic extends HttpServlet {
             request.setAttribute("NAME", n);
             RequestDispatcher disp = null;
 
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal", "root", "password");
+            Connection con = DatabaseConnect();
+           
             PreparedStatement pst = con.prepareStatement("Delete from products where pro_id=?");
 
             pst.setInt(1, n);

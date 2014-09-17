@@ -4,7 +4,7 @@
     Author     : aaditya
 --%>
 
-<%@page import="java.sql.DriverManager"%>
+<%@page import="static Common.DatabaseConnect.DatabaseConnect"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -37,8 +37,7 @@
             
             int bugid=Integer.parseInt(request.getParameter("bugid"));
             
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","root","password");
+            Connection con = DatabaseConnect();
             
             String query="Select description,solution from bugs where bug_id=?";
             PreparedStatement pst=con.prepareStatement(query);

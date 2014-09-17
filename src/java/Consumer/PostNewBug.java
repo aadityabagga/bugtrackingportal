@@ -4,10 +4,10 @@
  */
 package Consumer;
 
+import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
@@ -46,8 +46,9 @@ public class PostNewBug extends HttpServlet {
                 String ov=request.getParameter("ov");
                 String desc=request.getParameter("desc");
                 Date dt = new Date();
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal", "root", "password");
+                
+                Connection con = DatabaseConnect();
+                
                 String query = "insert into bugs(posted_by,posted_on,domain,overview,description) values(?,?,?,?,?)";
                 PreparedStatement pst = con.prepareStatement(query);
                 pst.setString(1, pb);
