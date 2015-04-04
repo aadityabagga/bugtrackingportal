@@ -17,29 +17,9 @@
     <body>
     <center><h1>ChangeLog</h1></center>
     <br>
-    <p style="margin-left: 40px">
     
-        <u>Version 1.0</u>
-        <br>
-            <ul>
-        
-            </ul>
-        <br>
-        
-        <u>Version 1.1</u>
-        <br>
-            <ul>
-        
-            </ul>
-        <br>
-        
-        <u>Version 1.2</u>
-        <br>
-            <ul>
-        
-            </ul>
-        
-           
+    <center>To be added</center>
+
     <!-- Footer -->
 <div id="footer">
     <p>&copy; Version <u><a href='Changelog.jsp'>1.2</a></u> Designed by Aaditya Bagga</p>

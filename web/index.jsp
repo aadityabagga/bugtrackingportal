@@ -30,7 +30,7 @@
         
 <!-- Footer -->
 <div id="footer">
-    <p>&copy; Version <u>1.2</u> Designed by Aaditya Bagga</p>
+    <p>&copy; Version <u><a href='Changelog.jsp'>1.2</a></u> Designed by Aaditya Bagga</p>
 </div>
 <!-- End Footer -->
         
