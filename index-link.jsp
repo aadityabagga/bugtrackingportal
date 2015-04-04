@@ -1,1 +1,0 @@
-/home/aaditya/DataLinux/apache/apache-tomcat-7.0.34/webapps/ROOT/index.jsp

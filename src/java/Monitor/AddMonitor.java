@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -44,9 +45,12 @@ public class AddMonitor extends HttpServlet {
             
            Connection con = DatabaseConnect();
            
+            /* Hash password */
+            String pw = DigestUtils.sha1Hex(p);
+
            PreparedStatement pst=con.prepareStatement("insert into monitors(username,password) values(?,?)");
            pst.setString(1, un);
-           pst.setString(2, p);
+           pst.setString(2, pw);
            int status=pst.executeUpdate();
            if(status>0)
                request.setAttribute("msg","Monitor Added Successfully!");

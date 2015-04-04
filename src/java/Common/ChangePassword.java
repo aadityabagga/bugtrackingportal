@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -50,6 +51,11 @@ public class ChangePassword extends HttpServlet {
             String np=request.getParameter("new_pwd");
             String p=request.getParameter("pwd");
             
+            /* Hash passwords */
+            String pw = DigestUtils.sha1Hex(p);
+            String npw = DigestUtils.sha1Hex(np);
+
+
             if(role.equals("consumer"))
                 query="select password from consumers where username=?";
             else if(role.equals("monitor"))
@@ -64,7 +70,7 @@ public class ChangePassword extends HttpServlet {
         
         if(rs.next())
         {
-        if(!(p.equals(rs.getString("password"))))
+        if(!(pw.equals(rs.getString("password"))))
         {
             request.setAttribute("msg", "Entered password doesnt match the password in database");
         }
@@ -78,7 +84,7 @@ public class ChangePassword extends HttpServlet {
                 query2="update experts set password=? where username=?";
             
             PreparedStatement pst1=con.prepareStatement(query2);
-           pst1.setString(1, np);
+           pst1.setString(1, npw);
            pst1.setString(2, lID);
             int status=pst1.executeUpdate();
             if(status>0)

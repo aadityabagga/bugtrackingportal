@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 /**
@@ -44,12 +45,16 @@ public class EnterIntoConsumerDB extends HttpServlet {
 
             
             Connection con = DatabaseConnect();
+
+            /* Hash password before storing */
+            String pwd = DigestUtils.sha1Hex(pw);
+
             PreparedStatement pst=con.prepareStatement("insert into consumers(username,password,email,phone,address,city,gender,dob,joined_on) values(?,?,?,?,?,?,?,?,?)");
             
             RequestDispatcher disp=null;
             
             pst.setString(1, n);
-            pst.setString(2, pw);
+            pst.setString(2, pwd);
             pst.setString(3, e);
             pst.setString(4, c);
             pst.setString(5, a);

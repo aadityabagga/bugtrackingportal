@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -34,6 +35,9 @@ public class ValidateLogin extends HttpServlet {
             String p = request.getParameter("pw");
             String r = request.getParameter("rl");
             
+            /* Get hash value of password */
+            String pw = DigestUtils.sha1Hex(p);
+
             Connection con = DatabaseConnect();
             
             PreparedStatement pst=null;
@@ -47,7 +51,7 @@ public class ValidateLogin extends HttpServlet {
                  pst=con.prepareStatement("Select * from consumers where username='"+n+"'");
                  rs=pst.executeQuery();
                  rs.next();
-                 if (rs.getString("password").equals(p))
+                 if (rs.getString("password").equals(pw))
                     {
                         status=true;
                         disp = getServletContext().getRequestDispatcher("/ConsumerHome.jsp");
@@ -59,7 +63,7 @@ public class ValidateLogin extends HttpServlet {
                  pst=con.prepareStatement("Select * from monitors where username='"+n+"'");
                  rs=pst.executeQuery();
                  rs.next();
-                 if (rs.getString("password").equals(p))
+                 if (rs.getString("password").equals(pw))
                     {
                          status=true;
                          disp = getServletContext().getRequestDispatcher("/MonitorHome.jsp");
@@ -70,7 +74,7 @@ public class ValidateLogin extends HttpServlet {
                  pst=con.prepareStatement("Select * from experts where username='"+n+"'");
                  rs=pst.executeQuery();
                  rs.next();
-                 if (rs.getString("password").equals(p))
+                 if (rs.getString("password").equals(pw))
                     {
                          status=true;
                          disp = getServletContext().getRequestDispatcher("/ExpertHome.jsp");
@@ -100,7 +104,7 @@ public class ValidateLogin extends HttpServlet {
         }        
         catch(Exception e)
         {
-            response.sendRedirect("Login.jsp?msg=Login Authentication Failed: "+e);
+            response.sendRedirect("Login.jsp?msg=Login Authentication Failed: "+"Could not connect to database");
         }
         finally
         {            

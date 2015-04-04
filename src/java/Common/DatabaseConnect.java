@@ -28,6 +28,9 @@ package Common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author aaditya
@@ -40,12 +43,14 @@ public class DatabaseConnect {
          try
         {
             Class.forName("com.mysql.jdbc.Driver");
-           con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","bugportal","bpdbpass");
-        }
-         catch (Exception e)
-         {
-             
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bugportal","bugportal","bpdbpass");
+            //con = DriverManager.getConnection("jdbc:mysql://localhost/bugportal","bugportal","bpdbpass");
          }
+          catch (ClassNotFoundException ex) {
+            Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseConnect.class.getName()).log(Level.SEVERE, null, ex);
+        }
     return con;    
     }
     

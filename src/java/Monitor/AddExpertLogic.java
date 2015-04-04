@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -51,13 +52,16 @@ public class AddExpertLogic extends HttpServlet {
             String d=request.getParameter("dom");
             
             Connection con = DatabaseConnect();
-            
+
+            /* Hash password */
+            String pwd = DigestUtils.sha1Hex(pw);
+
             PreparedStatement pst=con.prepareStatement("insert into experts(username,password,email,phone,address,city,domain) values(?,?,?,?,?,?,?)");
             
             RequestDispatcher disp=null;
             
             pst.setString(1, n);
-            pst.setString(2, pw);
+            pst.setString(2, pwd);
             pst.setString(3, e);
             pst.setString(4, c);
             pst.setString(5, a);
