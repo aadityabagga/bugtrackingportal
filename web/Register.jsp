@@ -93,7 +93,7 @@
                 </tr>
                 <tr>
                     <td>Address:</td>
-                    <td><textarea rows="5" cols="27" name="addrs"></textarea></td>
+                    <td><textarea rows="5" cols="29" name="addrs"></textarea></td>
                 </tr>
                 <tr>
                     <td>City:</td>
