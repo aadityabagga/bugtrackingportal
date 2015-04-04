@@ -34,22 +34,8 @@ public class ExpertReport extends HttpServlet {
             String loginname=(String)s.getAttribute("uname");
             String role=(String)s.getAttribute("rl");
             
-            Integer expid=Integer.parseInt(request.getParameter("eno"));
-            String temp=null;   //want to store expert name
-            
-            Connection con = DatabaseConnect();
-            
-            PreparedStatement pst2=con.prepareStatement("select * from experts where expert_id=?");
-            pst2.setInt(1,expid);
-            
-            
-            ResultSet rs2=pst2.executeQuery();
-            if(rs2.next())
-                temp=rs2.getString("username");
-            
-            if(temp!=null)
-                loginname=temp;
-            
+	    Connection con = DatabaseConnect();
+
             if(loginname==null)
             {
                 request.setAttribute("msg","<i>You are not logged in. Please Login</i>");
