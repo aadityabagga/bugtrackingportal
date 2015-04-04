@@ -110,11 +110,11 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
-  `pro_name` varchar(64) CHARACTER SET utf8 NOT NULL,
-  `pro_desc` varchar(128) CHARACTER SET utf8 NOT NULL,
+  `pro_name` varchar(64) NOT NULL,
+  `pro_desc` varchar(128) NOT NULL,
   `pro_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`pro_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -126,4 +126,4 @@ CREATE TABLE `products` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-04 13:28:34
+-- Dump completed on 2015-04-04 13:40:28
