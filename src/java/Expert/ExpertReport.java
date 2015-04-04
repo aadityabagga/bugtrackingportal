@@ -30,7 +30,7 @@ public class ExpertReport extends HttpServlet {
         PrintWriter out = response.getWriter();
         try
         {
-                HttpSession s=request.getSession(false);
+            HttpSession s=request.getSession(false);
             String loginname=(String)s.getAttribute("uname");
             String role=(String)s.getAttribute("rl");
             
