@@ -19,7 +19,7 @@
         <center><h1><b><i><u>Contact Us</u></i></b></h1>
             <br>
         For any queries, please send a mail by
-        <br><a href="mailto:aaditya_bagga@hotmail.com">Clicking Here!</a>
+        <br><a href="mailto:aadityabagga@outlook.in">Clicking Here!</a>
         
         <!-- Footer -->
 <div id="footer">

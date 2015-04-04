@@ -40,7 +40,7 @@
         
             <h2>Add product</h2><br>
             <form method="post" action="AddProductLogic">
-                <table border="1">
+                <table>
                     
                     <tr>
                         <td>Product Name</td>

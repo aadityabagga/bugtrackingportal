@@ -41,9 +41,8 @@
             The expert will then try to assist you.<br>
             If you are not satisfied then we will reassign your bug to a different expert to help solve your problem.<br>
             <br>
-            <i>We <b><u>Thank you</u></b> for your cooperation and for choosing our product.</i><br><br>
-            For any enquiries please send a mail to the following email address by clicking on it :
-            <a href="mailto:aaditya_bagga@hotmail.com">aaditya_bagga@hotmail.com</a>
+            <i>We thank you for your cooperation and for choosing our product.</i><br><br>
+            For any enquiries please send a mail to the following email address by clicking <a href="mailto:aadityabagga@outlook.in">here</a>.
             
     </p>            
         

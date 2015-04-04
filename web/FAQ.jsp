@@ -22,10 +22,9 @@
             <b>This is a bug (problem) tracking portal.</b><br/>
         Here you can post a bug about any problem you are facing.<br/>
         New users please <a href="Register.jsp">Sign Up</a> up in order to post bugs.<br/>
-        Existing users can <a href="Login.jsp">Login</a> to post new bugs or view previously posted bugs status
-        <br><br>
-        <p style="background: lavender; border: 1">*Thank You*</p>
-        
+        Existing users can <a href="Login.jsp">Login</a> to post new bugs or view status of previously posted bugs.
+        <br>
+
         <!-- Footer -->
 <div id="footer">
     <p>&copy; Version <u><a href='Changelog.jsp'>1.2</a></u> Designed by Aaditya Bagga</p>

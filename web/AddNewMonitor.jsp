@@ -69,7 +69,7 @@
             
             <h3><u>Add New Monitor:</u></h3>
             <br>
-            <table border="1" align="center">
+            <table align="center">
   <tr>
     <td >Enter Monitor Name </td>
     <td align="center" ><input type="text" name="nm"></td>
