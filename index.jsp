@@ -1,1 +1,1 @@
-/home/aaditya/DataLinux/java/Netbeans/BugPortalProject/web/index.jsp
+web/index.jsp
