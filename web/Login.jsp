@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : Login
     Created on : Jul 25, 2013, 7:54:39 PM
     Author     : aaditya
@@ -38,35 +38,34 @@
         <%@include file="CommonMenu.jsp"%>
 
         <br>
-        
+
         <%
             String str=request.getParameter("msg");
             String msg=(String)request.getAttribute("msg");
-            
+
             if(msg!=null)
             {
                   out.println("<div class='message error-message'><p><strong>");
                   out.println(msg);
                   out.println("</strong></p></div>");
-            }     
-            
+            }
+
             if(str!=null)
             {
                   out.println("<div class='message error-message'><p><strong>");
                   out.println(str);
                   out.println("</strong></p></div>");
-            }     
+            }
 
         %>
 
-        
         <br>
         <fieldset id="login">
             <form name="loginForm" method="post" action="ValidateLogin" onsubmit="return validateLogin(this);">
 
                 <h4>Members login</h4>
 
-                <p class="clearfix"><label for="username">Username</label>   
+                <p class="clearfix"><label for="username">Username</label>
                     <input id="username" type="text" name="nm"/></p>
 
                 <p class="clearfix"><label for="password">Password</label>
@@ -78,11 +77,11 @@
                             <option value="consumer" selected>
                                 Consumer
                             </option>
-                            <option  value="monitor">
-                                Monitor
-                            </option>
                             <option  value="expert">
                                 Expert
+                            </option>
+                            <option  value="monitor">
+                                Monitor
                             </option>
                         </select>
                     </label>
@@ -93,7 +92,6 @@
 
         </fieldset>
 
- 
     </center>
 </body>
 </html>
