@@ -38,7 +38,7 @@
     </servlet>
     <servlet>
         <servlet-name>UpdateProfileServlet</servlet-name>
-        <servlet-class>Common.UpdateProfileServlet</servlet-class>
+        <servlet-class>Common.UpdateProfile</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ViewBugs</servlet-name>
