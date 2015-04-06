@@ -74,7 +74,7 @@
     </servlet>
     <servlet>
         <servlet-name>Reports</servlet-name>
-        <servlet-class>Common.Reports</servlet-class>
+        <servlet-class>Monitor.Reports</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ExpertReport</servlet-name>
@@ -172,10 +172,10 @@
         <session-timeout>
             30
         </session-timeout>
-</session-config>
-  <welcome-file-list>
-	  <welcome-file>index.html</welcome-file>
-	  <welcome-file>index.htm</welcome-file>
-	  <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

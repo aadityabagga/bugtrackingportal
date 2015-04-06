@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Common;
+package Monitor;
 
 import static Common.DatabaseConnect.DatabaseConnect;
 import java.io.IOException;
@@ -36,11 +36,35 @@ public class Reports extends HttpServlet {
             if(loginname==null)
             {
                 request.setAttribute("msg","<i>You are not logged in. Please Login</i>");
-                
+
                 RequestDispatcher disp=getServletContext().getRequestDispatcher("/Login.jsp");
                 disp.forward(request, response);
-            }  
-            
+            }
+
+	    String role = (String) s.getAttribute("rl");
+	    if (!role.equals("monitor"))
+	    {
+		    request.setAttribute("msg", "<i>Role unauthorized.</i>");
+		    RequestDispatcher disp;
+
+		    if (role.equals("expert"))
+		    {
+			disp = getServletContext().getRequestDispatcher("/ExpertHome.jsp");
+		    }
+		    else if (role.equals("consumer"))
+		    {
+			disp = getServletContext().getRequestDispatcher("/ConsumerHome.jsp");
+		    }
+		    else
+		    {
+			s.invalidate();
+			s = null;
+			disp = getServletContext().getRequestDispatcher("/Login.jsp");
+		    }
+
+		    disp.forward(request, response);
+	}
+
             Connection con = DatabaseConnect();
                 Statement st=con.createStatement();
                 ResultSet rs=st.executeQuery("Select * from bugs");
