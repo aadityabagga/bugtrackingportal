@@ -37,7 +37,7 @@
         <servlet-class>Common.ChangePassword</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateProfileServlet</servlet-name>
+        <servlet-name>UpdateProfile</servlet-name>
         <servlet-class>Common.UpdateProfile</servlet-class>
     </servlet>
     <servlet>
@@ -121,8 +121,8 @@
         <url-pattern>/ChangePassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateProfileServlet</servlet-name>
-        <url-pattern>/UpdateProfileServlet</url-pattern>
+        <servlet-name>UpdateProfile</servlet-name>
+        <url-pattern>/UpdateProfile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ViewBugs</servlet-name>
